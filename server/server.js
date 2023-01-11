@@ -30,6 +30,18 @@ async function populateDB(model, inputArray) {
   await model.create(...inputArray);
   const data = await model.find({});
   console.log(data)
+  generateUsersToHospitals(data)
+}
+
+const generateUsersToHospitals = (hospitals) => {
+  const users = hospitals.map((hospital, index) => {
+    return {
+      name: `User ${index + 1}`,
+      age: Math.floor(Math.random() * 50) + 18,
+      hospital: hospital._id
+    }
+  });
+  userModel.insertMany(users);
 }
 
 async function connectToDB(url) {

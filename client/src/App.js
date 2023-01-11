@@ -1,11 +1,13 @@
-import './App.css';
+import { Route, Routes } from 'react-router-dom'
 import Order from './Order';
 
 
 function App() {
   return (
-    <div className="App">
-      < Order />
+    <div>
+      <Routes>
+        <Route path="/order" element={<Order />} />
+      </Routes>
     </div>
   );
 }

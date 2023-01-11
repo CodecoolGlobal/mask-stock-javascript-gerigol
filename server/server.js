@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
 
 app.post('/api/order', async (req, res) => {
   const order = await orderModel.create(req.body);
+  console.log(req.body)
   await products.findOneAndUpdate({ name: 'Mask' }, { $inc: { inStock: -Number(req.body.orderAmount) } })
   res.json(order)
 })

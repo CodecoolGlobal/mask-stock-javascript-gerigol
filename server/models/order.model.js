@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose
 
 const orderSchema = new Schema({
-  amount: Number,
+  orderAmount: Number,
   price: Number,
   partner: { type: Schema.Types.ObjectId, ref: 'User' }
 })

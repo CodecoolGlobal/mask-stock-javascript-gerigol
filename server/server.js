@@ -4,11 +4,11 @@ const hospitals = require('./hospitalsData.json');
 const userModel = require("./models/user.model");
 const express = require('express');
 const orderModel = require("./models/order.model");
-
+const products = require('./models/product.model')
+const port = 8080
 const app = express();
 
-connectToDB('mongodb://localhost/mask-stock');
-populateDB(hospitalModel, hospitals)
+connectToDB('mongodb://127.0.0.1:27017/mask-stock');
 
 app.use(express.json());
 
@@ -18,36 +18,16 @@ app.get('/', (req, res) => {
 
 app.post('/api/order', async (req, res) => {
   const order = await orderModel.create(req.body);
+  await products.findOneAndUpdate({ name: 'Mask' }, { $inc: { inStock: -Number(req.body.orderAmount) } })
   res.json(order)
 })
 
-
-
-
-
-async function populateDB(model, inputArray) {
-  await model.deleteMany();
-  await model.create(...inputArray);
-  const data = await model.find({});
-  console.log(data)
-  generateUsersToHospitals(data)
-}
-
-const generateUsersToHospitals = (hospitals) => {
-  const users = hospitals.map((hospital, index) => {
-    return {
-      name: `User ${index + 1}`,
-      age: Math.floor(Math.random() * 50) + 18,
-      hospital: hospital._id
-    }
-  });
-  userModel.insertMany(users);
-}
 
 async function connectToDB(url) {
   try {
     const db = await mongoose.connect(url);
     console.log(`Connected to: ${db.connection.name}`);
+    app.listen(port, () => console.log(`Example app listening on port ${port}!`))
   } catch (error) {
     console.log(error)
   }

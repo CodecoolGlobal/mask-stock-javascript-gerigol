@@ -23,6 +23,10 @@ app.post('/api/order', async (req, res) => {
   res.json(order)
 })
 
+app.get('/api/products', async (req, res) => {
+  const pr = await products.find({})
+  res.json(pr)
+})
 app.get('/api/users', async (req, res) => {
   const users = await userModel.find()
   res.json(users)

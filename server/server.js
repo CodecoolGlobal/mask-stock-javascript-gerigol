@@ -3,6 +3,7 @@ const hospitalModel = require("./models/hospital.model");
 const hospitals = require('./hospitalsData.json');
 const userModel = require("./models/user.model");
 const express = require('express');
+const orderModel = require("./models/order.model");
 
 const app = express();
 
@@ -15,7 +16,10 @@ app.get('/', (req, res) => {
   res.send('Hello')
 })
 
-
+app.post('/api/order', async (req, res) => {
+  const order = await orderModel.create(req.body);
+  res.json(order)
+})
 
 
 

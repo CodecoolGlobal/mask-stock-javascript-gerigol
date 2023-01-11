@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-  vendor_id: String,
-  partner_id: Number,
+  vendor_id: String, // hospital id
+  partner_id: Number, // user id ?
   block_id: Number,
   bank_account_id: Number,
   type: String,

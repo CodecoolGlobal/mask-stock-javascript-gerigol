@@ -22,6 +22,10 @@ app.post('/api/order', async (req, res) => {
   res.json(order)
 })
 
+app.get('/api/users', async (req, res) => {
+  const users = await userModel.find()
+  res.json(users)
+})
 
 async function connectToDB(url) {
   try {

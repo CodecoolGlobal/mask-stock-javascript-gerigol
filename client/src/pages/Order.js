@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -61,33 +62,50 @@ const Order = () => {
 
   return (
     <div>
-      <Link to={'/'}><button>Back</button></Link>
-      <form>
-        <label htmlFor="masks">Order amount: </label>
-        <input
-          type="number"
-          name="masks"
-          onChange={(e) => handleChange(Number(e.target.value))}
-          value={parseInt(orderAmount).toString()}
-          min={1}
-          max={products ? products[0].inStock : 100}
-        />
-        <button onClick={(e) => HandlePlaceOrder(e)}>Place order</button>
-      </form>
-      <p>Price per piece: {priceOfOneMask} HUF</p>
-      <h3>Total: {price} HUF</h3>
-      <label htmlFor="select"> Select a User: </label>
-      <select
-        value={selectedUserID}
-        onChange={(e) => setSelectedUserID(e.target.value)}
+      <div>
+        <Link to={"/"}>
+          <Button variant="contained">Back</Button>
+        </Link>
+      </div>
+
+      <div
+        style={{
+          padding: "25px",
+          fontSize: "25px",
+          display: "flex",
+          alignItems: "baseline",
+          justifyContent: "space-evenly",
+        }}
       >
-        {users &&
-          users.map((user) => (
-            <option value={user._id} key={user._id}>
-              {user.name}
-            </option>
-          ))}
-      </select>
+        <form>
+          <label htmlFor="masks">Order amount: </label>
+          <input
+            type="number"
+            name="masks"
+            onChange={(e) => handleChange(Number(e.target.value))}
+            value={parseInt(orderAmount).toString()}
+            min={1}
+            max={products ? products[0].inStock : 100}
+          />
+          <button onClick={(e) => HandlePlaceOrder(e)}>Place order</button>
+        </form>
+        <p>Price per piece: {priceOfOneMask} HUF</p>
+        <h3>Total: {price} HUF</h3>
+      </div>
+      <div>
+        <label htmlFor="select"> Select a User: </label>
+        <select
+          value={selectedUserID}
+          onChange={(e) => setSelectedUserID(e.target.value)}
+        >
+          {users &&
+            users.map((user) => (
+              <option value={user._id} key={user._id}>
+                {user.name}
+              </option>
+            ))}
+        </select>
+      </div>
     </div>
   );
 };

@@ -9,7 +9,8 @@ const Order = () => {
   const [selectedUserID, setSelectedUserID] = useState(users ? users[0]._id : '');
   const [price, setPrice] = useState(priceOfOneMask)
   const navigate = useNavigate();
-  const [products, setProducts] = useState(null)
+  const [products, setProducts] = useState(null);
+  const [showError, setShowError] = useState(null);
 
   useEffect(() => {
     fetch('api/products')
@@ -25,10 +26,18 @@ const Order = () => {
     setPrice(value * priceOfOneMask)
   }
 
+  const showErrorTag = async (message) => {
+    if (message === 'error') {
+      setTimeout(() => setShowError(null), 2000)
+      return setShowError('error');
+    } else if (message === 'sent') { }
+    setTimeout(() => setShowError(null), 2000)
+    return setShowError('sent');
+  }
+
   const HandlePlaceOrder = async (e) => {
     e.preventDefault();
-    if (orderAmount < 1) return
-    if (orderAmount > products[0].inStock) return
+    if (orderAmount < 1 || orderAmount > products[0].inStock) return showErrorTag('error')
     const selectedUser = users.filter(user => user._id === selectedUserID)[0]
     await fetch('/api/order', {
       method: "POST",
@@ -45,7 +54,9 @@ const Order = () => {
     })
     setOrderAmount(1)
     setPrice(priceOfOneMask)
-    navigate("/")
+    showErrorTag('sent');
+    setTimeout(() => navigate("/"), 2000)
+
   }
 
   const fetchUsers = async () => {
@@ -88,6 +99,9 @@ const Order = () => {
             value={user._id} key={user._id}>{user.name}
           </option>))}
       </select>
+      {showError === 'error' && <p>Invalid Order!</p>}
+      {showError === 'sent' && <p>Order sent! We  redirect you to the homepage</p>}
+
     </div>
   )
 }

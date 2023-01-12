@@ -1,0 +1,40 @@
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: #C0C0C0;
+    width: 500px;
+    border-radius: 30px;
+    margin-left: 30px;
+    padding: 20px;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 30px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.Menu li {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.Menu li:hover {
+    background-color: #111;
+}

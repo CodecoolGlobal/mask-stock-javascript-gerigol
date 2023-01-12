@@ -15,20 +15,61 @@ const Home = () => {
 
   return (
     <div>
+
+      <ul className="Menu">
+        <Link to={'/'}>
+          <li>Home</li>
+        </Link>
+        <Link to={'/'}>
+          <li>Products</li>
+        </Link>
+        <Link to={'/'}>
+          <li>Ingyom</li>
+        </Link>
+        <Link to={'/'}>
+          <li>Bingyom</li>
+        </Link>
+      </ul>
       <div>
         <h1>Products:</h1>
       </div>
-      <Link to={'/order'}>
-        <div className="card" style={{ backgroundColor: '#C0C0C0', width: '500px', borderRadius: '30px', marginLeft: '30px' }}>
-          <div>
-            <img src="./musk.jpg" alt="" style={{ width: '500px', borderRadius: '30px' }} />
+      <div className="cardContainer">
+        <Link to={'/order'}>
+          <div className="card" >
+            <div>
+              <img src="./musk.jpg" alt="" />
+            </div>
+            <div>
+              <h2>Name: A</h2>
+              <h2>In Stock : {products[0].inStock}</h2>
+            </div>
           </div>
-          <div style={{ padding: '20px' }}>
-            <h2>Name: Mask</h2>
-            <h2>In Stock : {products[0].inStock}</h2>
+        </Link>
+        <Link to={'/order'}>
+          <div className="card" >
+            <div>
+              <img src="./musk.jpg" alt="" />
+            </div>
+            <div>
+              <h2>Name: B</h2>
+              <h2>In Stock : {products[0].inStock}</h2>
+            </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+        <Link to={'/order'}>
+          <div className="card" >
+            <div>
+              <img src="./musk.jpg" alt="" />
+            </div>
+            <div>
+              <h2>Name: C</h2>
+              <h2>In Stock : {products[0].inStock}</h2>
+            </div>
+          </div>
+        </Link>
+
+      </div>
+
     </div>
   );
 }

@@ -20,9 +20,7 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
-
   if (!products) return <h1>Loading...</h1>;
-
   return (
     <div>
       <div style={centerDiv}>
@@ -37,7 +35,6 @@ const Home = () => {
           marginBottom: "75px",
         }}
       ></hr>
-
       <div
         className="card"
         style={{

@@ -23,7 +23,10 @@ const Home = () => {
       <div>
         <h1 style={h1Style}>Products:</h1>
       </div>
-      <Link to={"/order"}>
+      <Link
+        to={"/order"}
+        style={{display: 'inline-block'}}
+      >
         <div
           className="card"
           style={{

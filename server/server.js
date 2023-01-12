@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const hospitalModel = require("./models/hospital.model");
-const hospitals = require('./hospitalsData.json');
 const userModel = require("./models/user.model");
 const express = require('express');
 const orderModel = require("./models/order.model");

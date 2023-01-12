@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Pécsi Irgalmasrendi Kórház",
+    "location": {
+      "country": "Hungary",
+      "city": "Pécs"
+    }
+  },
+  {
+    "name": "Miskolci Semmelweis Ignác Egészségügyi Központ és Egyetemi Oktatókórház",
+    "location": {
+      "country": "Hungary",
+      "city": "Miskolc"
+    }
+  },
+  {
+    "name": "Szent Pantaleon Kórház",
+    "location": {
+      "country": "Hungary",
+      "city": "Dunaújváros"
+    }
+  },
+  {
+    "name": "Markhot Ferenc Oktatókórház és Rendelőintézet",
+    "location": {
+      "country": "Hungary",
+      "city": "Eger"
+    }
+  },
+  {
+    "name": "Fővárosi Önkormányzat Heim Pál Gyermekkórház",
+    "location": {
+      "country": "Hungary",
+      "city": "Budapest"
+    }
+  },
+  {
+    "name": "The Helios Hospital Berlin-Buch",
+    "location": {
+      "country": "Germany",
+      "city": "Berlin"
+    }
+  },
+  {
+    "name": "The University Hospital Duesseldorf",
+    "location": {
+      "country": "Germany",
+      "city": "Duesseldorf"
+    }
+  },
+  {
+    "name": "The University Hospital of Ludwig Maximilian University of Munich",
+    "location": {
+      "country": "Germany",
+      "city": "Munich"
+    }
+  },
+  {
+    "name": "Rigas Austrumu Kliniskas Universitates",
+    "location": {
+      "country": "Latvia",
+      "city": "Riga"
+    }
+  },
+  {
+    "name": "Karolinska University Hospital",
+    "location": {
+      "country": "Swened",
+      "city": "Stockholm"
+    }
+  }
+]

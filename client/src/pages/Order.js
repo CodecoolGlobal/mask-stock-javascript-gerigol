@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Order = () => {
   const priceOfOneMask = 100;
 
-  const [orderAmount, setOrderAmount] = useState(0);
+  const [orderAmount, setOrderAmount] = useState(1);
   const [users, setUsers] = useState(null);
   const [selectedUserID, setSelectedUserID] = useState(users ? users[0]._id : '');
   const [price, setPrice] = useState(priceOfOneMask)
@@ -28,6 +28,7 @@ const Order = () => {
   const HandlePlaceOrder = async (e) => {
     e.preventDefault();
     if (orderAmount < 1) return
+    if (orderAmount > products[0].inStock) return
     const selectedUser = users.filter(user => user._id === selectedUserID)[0]
     await fetch('/api/order', {
       method: "POST",

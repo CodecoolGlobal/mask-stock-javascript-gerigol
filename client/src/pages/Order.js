@@ -61,7 +61,7 @@ const Order = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{fontSize: "30px"}}>
       <div>
         <Link to={"/"}>
           <Button variant="contained">Back</Button>
@@ -71,7 +71,7 @@ const Order = () => {
       <div
         style={{
           padding: "25px",
-          fontSize: "25px",
+          
           display: "flex",
           alignItems: "baseline",
           justifyContent: "space-evenly",
@@ -86,17 +86,19 @@ const Order = () => {
             value={parseInt(orderAmount).toString()}
             min={1}
             max={products ? products[0].inStock : 100}
+            style={{fontSize: "25px"}}
           />
-          <button onClick={(e) => HandlePlaceOrder(e)}>Place order</button>
+          
         </form>
         <p>Price per piece: {priceOfOneMask} HUF</p>
         <h3>Total: {price} HUF</h3>
       </div>
-      <div>
+      <div style={{display: "flex", alignItems: "center", justifyContent: "center",flexDirection: "column"}}>
         <label htmlFor="select"> Select a User: </label>
         <select
           value={selectedUserID}
           onChange={(e) => setSelectedUserID(e.target.value)}
+          style={{fontSize: "25px"}}
         >
           {users &&
             users.map((user) => (
@@ -105,7 +107,9 @@ const Order = () => {
               </option>
             ))}
         </select>
+        <Button style={{marginTop: "45px"}} variant="contained" onClick={(e) => HandlePlaceOrder(e)}>Place order</Button>
       </div>
+      
     </div>
   );
 };

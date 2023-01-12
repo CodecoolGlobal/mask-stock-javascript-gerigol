@@ -4,11 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Order = () => {
   const priceOfOneMask = 100;
+
   const [orderAmount, setOrderAmount] = useState(1);
   const [users, setUsers] = useState(null);
-  const [selectedUserID, setSelectedUserID] = useState(
-    users ? users[0]._id : ""
-  );
+  const [selectedUserID, setSelectedUserID] = useState("");
   const [price, setPrice] = useState(priceOfOneMask);
   const navigate = useNavigate();
   const [products, setProducts] = useState(null);
@@ -79,7 +78,6 @@ const Order = () => {
       <div
         style={{
           padding: "25px",
-
           display: "flex",
           alignItems: "baseline",
           justifyContent: "space-evenly",

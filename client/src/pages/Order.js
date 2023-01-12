@@ -13,6 +13,8 @@ const Order = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState(null);
 
+  const [showError, setShowError] = useState(null);
+
   useEffect(() => {
     fetch("api/products")
       .then((res) => res.json())
@@ -26,12 +28,21 @@ const Order = () => {
     setPrice(value * priceOfOneMask);
   };
 
+  const showErrorTag = async (message) => {
+    if (message === 'error') {
+      setTimeout(() => setShowError(null), 2000)
+      return setShowError('error');
+    } else if (message === 'sent') { }
+    setTimeout(() => setShowError(null), 2000)
+    return setShowError('sent');
+  }
+
   const HandlePlaceOrder = async (e) => {
     e.preventDefault();
-    if (orderAmount < 1) return;
-    if (orderAmount > products[0].inStock) return;
-    const selectedUser = users.filter((user) => user._id === selectedUserID)[0];
-    await fetch("/api/order", {
+
+    if (orderAmount < 1 || orderAmount > products[0].inStock) return showErrorTag('error')
+    const selectedUser = users.filter(user => user._id === selectedUserID)[0]
+    await fetch('/api/order', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -41,13 +52,16 @@ const Order = () => {
           price,
           currency: "HUF",
         },
-        partner: selectedUser._id,
-      }),
-    });
-    setOrderAmount(1);
-    setPrice(priceOfOneMask);
-    navigate("/");
-  };
+
+        partner: selectedUser._id
+      })
+    })
+    setOrderAmount(1)
+    setPrice(priceOfOneMask)
+    showErrorTag('sent');
+    setTimeout(() => navigate("/"), 2000)
+
+  }
 
   const fetchUsers = async () => {
     const res = await fetch("/api/users");
@@ -77,6 +91,7 @@ const Order = () => {
           justifyContent: "space-evenly",
         }}
       >
+
         <form>
           <label htmlFor="masks">Order amount: </label>
           <input
@@ -110,6 +125,8 @@ const Order = () => {
         <Button style={{marginTop: "45px"}} variant="contained" onClick={(e) => HandlePlaceOrder(e)}>Place order</Button>
       </div>
       
+      {showError === 'error' && <p>Invalid Order!</p>}
+      {showError === 'sent' && <p>Order sent! We  redirect you to the homepage</p>}
     </div>
   );
 };

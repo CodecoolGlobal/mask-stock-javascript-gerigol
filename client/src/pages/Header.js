@@ -4,9 +4,10 @@ const Header = () => {
     alignItems: "center",
     justifyContent: "center",
     height: "10vh",
-    backgroundColor: "antiquewhite",
+    backgroundColor: "#333333",
     fontSize: "45px",
     fontWeight: "bold",
+    color: 'white'
   };
   return (
     <div style={headerStyle}>

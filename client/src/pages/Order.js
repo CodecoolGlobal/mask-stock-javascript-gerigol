@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Order = () => {
   const priceOfOneMask = 100;
 
-  const [orderAmount, setOrderAmount] = useState(1);
+  const [orderAmount, setOrderAmount] = useState(0);
   const [users, setUsers] = useState(null);
   const [selectedUserID, setSelectedUserID] = useState(users ? users[0]._id : '');
   const [price, setPrice] = useState(priceOfOneMask)

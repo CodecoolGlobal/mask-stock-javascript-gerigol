@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-
+import { useNavigate } from 'react-router-dom';
 
 const Order = () => {
 
   const [orderAmount, setOrderAmount] = useState(1);
   const [users, setUsers] = useState(null);
   const [selectedUserID, setSelectedUserID] = useState('Select a user: ');
-
+  const navigate = useNavigate();
   const handleChange = (value) => {
     setOrderAmount(value)
   }
@@ -24,9 +24,11 @@ const Order = () => {
       })
     })
     setOrderAmount(1)
+    navigate("/")
   }
 
   const fetchUsers = async () => {
+
     const res = await fetch('/api/users');
     const fetchedUsers = await res.json();
     setUsers(fetchedUsers)
@@ -53,7 +55,6 @@ const Order = () => {
       <select value={selectedUserID} onChange={(e) => setSelectedUserID(e.target.value)}>
         {users && users.map(user => <option value={user._id} key={user._id}>{user.name}</option>)}
       </select>
-      <p>!!!!!!!!!!{selectedUserID}</p>
     </div>
   )
 }

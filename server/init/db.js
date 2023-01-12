@@ -20,7 +20,8 @@ async function populateDB(model, inputArray) {
   generateUsersToHospitals(data)
 }
 
-const generateUsersToHospitals = (hospitals) => {
+const generateUsersToHospitals = async (hospitals) => {
+  await userModel.deleteMany({})
   const users = hospitals.map((hospital, index) => {
     return {
       name: `User ${index + 1}`,

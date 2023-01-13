@@ -28,8 +28,8 @@ const Order = () => {
   };
 
   const showMessageTag = (boolean, message) => {
-    setMessage(message)
     setShowMessage(boolean);
+    setMessage(message)
     setTimeout(() => setShowMessage(false), 1500);
   }
 
@@ -53,7 +53,7 @@ const Order = () => {
     })
     setOrderAmount(1)
     setPrice(priceOfOneMask)
-    setShowMessage(true, 'Order sent! We  redirect you to the homepage')
+    showMessageTag(true, 'Order sent! We  redirect you to the homepage')
     setTimeout(() => navigate("/"), 2000)
   }
 
